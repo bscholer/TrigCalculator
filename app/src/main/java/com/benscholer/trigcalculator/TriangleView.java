@@ -1,3 +1,5 @@
+package com.benscholer.trigcalculator;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,10 +11,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.LinearLayout;
 
-/**
- * @author Atrix1987
- *
- */
 public class TriangleView extends LinearLayout {
 
 	/**
@@ -51,7 +49,7 @@ public class TriangleView extends LinearLayout {
 		Point point = new Point();
 		point.x = 80;
 		point.y = 80;
-		trianglePath = getEquilateralTriangle(point, 70, Direction.SOUTH);
+		trianglePath = getRightTriangle(10, Shared.VERTICALSTR, 45, Shared.VERTICAL_ANGLE);
 	}
 
 	@Override
@@ -62,23 +60,12 @@ public class TriangleView extends LinearLayout {
 		canvas.drawPath(trianglePath, trianglePaint);
 	}
 
-	private Path getEquilateralTriangle(Point p1, int width, Direction direction) {
+	private Path getRightTriangle(double length, String lenType, double second, int secondType) {
 		Log.i("Sample", "inside getEqui");
+		Point p1 = new Point(80, 80);
 		Point p2 = null, p3 = null;
 
-		if (direction == Direction.NORTH) {
-			p2 = new Point(p1.x + width, p1.y);
-			p3 = new Point(p1.x + (width / 2), p1.y - width);
-		} else if (direction == Direction.SOUTH) {
-			p2 = new Point(p1.x + width, p1.y);
-			p3 = new Point(p1.x + (width / 2), p1.y + width);
-		} else if (direction == Direction.EAST) {
-			p2 = new Point(p1.x, p1.y + width);
-			p3 = new Point(p1.x - width, p1.y + (width / 2));
-		} else if (direction == Direction.WEST) {
-			p2 = new Point(p1.x, p1.y + width);
-			p3 = new Point(p1.x + width, p1.y + (width / 2));
-		}
+
 
 		Path path = new Path();
 		path.moveTo(p1.x, p1.y);
@@ -91,5 +78,4 @@ public class TriangleView extends LinearLayout {
 	public enum Direction {
 		NORTH, SOUTH, EAST, WEST;
 	}
-
 }
