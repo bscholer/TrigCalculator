@@ -49,7 +49,7 @@ public class TriangleView extends LinearLayout {
 		Point point = new Point();
 		point.x = 80;
 		point.y = 80;
-		trianglePath = getRightTriangle(10, Shared.VERTICALSTR, 45, Shared.VERTICAL_ANGLE);
+		trianglePath = getRightTriangleDimens(10, Shared.VERTICALSTR, 45, Shared.VERTICAL_ANGLE);
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class TriangleView extends LinearLayout {
 		canvas.drawPath(trianglePath, trianglePaint);
 	}
 
-	private Path getRightTriangle(double length, String lenType, double second, int secondType) {
+	private Path getRightTriangleDimens(double length, String lenType, double second, int secondType) {
 		Log.i("Sample", "inside getEqui");
 		Point p1 = new Point(80, 80);
 		Point p2 = null, p3 = null;
